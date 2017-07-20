@@ -1,0 +1,54 @@
+================================================================
+    * * * S U P P O R T I N G    I N F O R M A T I O N * * *
+================================================================
+
+BEWARE: the conversion of selected k-point coordinates to format
+        suitable for the PWscf is a new and untested feature.
+
+        !!! USE AT YOUR OWN RISK !!!
+        !!! PLEASE CHECK BELOW DATA FOR CONSISTENCY !!!
+
+Number of selected k-points: 6
+
+**ORIGINAL DATASET**
+--------------------
+THE FOLLOWING k-POINT WERE SELECTED:
+(crystal coordinates with respect to RECIPROCAL-PRIMITIVE vectors)
+
+      0.00000      0.00000      0.00000     GAMMA
+      0.50000      0.50000      0.00000     X
+      0.25000      0.50000     -0.25000     W
+      0.00000      0.37500     -0.37500     K
+     -0.00000      0.50000     -0.00000     L
+      0.00000      0.00000      0.00000     GAMMA
+
+**REPRODUCED(TRANSFORMED) DATASET for PWscf**
+----------------------------------------------
+IMPORTANT:
+Check if the data presented below are consistent with the data from ORIGINAL DATASET !!!
+
+   Selected k-points in CARTESIAN coordinates:
+      0.00000    0.00000    0.00000    GAMMA
+      0.00000    0.00000    0.28632    X
+      0.14316    0.00000    0.28632    W
+      0.21474    0.00000    0.21474    K
+      0.14316    0.14316    0.14316    L
+      0.00000    0.00000    0.00000    GAMMA
+
+   Selected k-points in crystal coordinates:
+   (with respect to RECIPROCAL-PRIMITIVE vectors)
+      0.00000    0.00000    0.00000    GAMMA
+      0.50000    0.50000    0.00000    X
+      0.25000    0.50000   -0.25000    W
+      0.00000    0.37500   -0.37500    K
+      0.00000    0.50000    0.00000    L
+      0.00000    0.00000    0.00000    GAMMA
+
+   Selected k-points in crystal coordinates:
+   (with respect to RECIPROCAL-CONVENTIONAL vectors)
+      0.00000    0.00000    0.00000    GAMMA
+      0.00000    0.00000    1.00000    X
+      0.50000    0.00000    1.00000    W
+      0.75000    0.00000    0.75000    K
+      0.50000    0.50000    0.50000    L
+      0.00000    0.00000    0.00000    GAMMA

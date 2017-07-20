@@ -1,0 +1,5 @@
+&BANDS
+outdir = '${output_dir}',
+prefix = '${prefix}',
+filband = '${output_dir}/bands_DIA.d',
+/

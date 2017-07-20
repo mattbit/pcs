@@ -1,0 +1,4 @@
+&INPUT
+fildyn = '${output_dir}/ph_DIA.dyn',
+flfrc = '${output_dir}/ph_DIA.fc',
+/

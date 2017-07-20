@@ -1,0 +1,44 @@
+#######################################
+# Doped diamond (1% Boron)            #
+#######################################
+
+output_dir: 'output/doped'
+
+steps:
+- name: scf
+  command: pw.x
+
+- name: bands
+  command: pw.x
+
+- name: bands_data
+  command: bands.x
+
+- name: nscf
+  command: pw.x
+
+- name: dos
+  command: dos.x
+
+vars:
+  doping: 'tot_charge = +0.01'
+  potentials_dir: 'potentials'
+  prefix: 'DIA_DOPED'
+  output_dir: 'output/doped'
+
+  conv_thr: '1.0d-8'
+
+  cell_config: |
+    ibrav = 2,
+    celldm(1) = 6.60,
+    nat = 2,
+    ntyp = 1
+
+  atomic_species: |
+    ATOMIC_SPECIES
+    C 12.011 C_PBE_hard.mt
+
+  atomic_positions: |
+    ATOMIC_POSITIONS crystal
+    C 0.00 0.00 0.00
+    C 0.25 0.25 0.25

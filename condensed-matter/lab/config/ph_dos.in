@@ -1,0 +1,10 @@
+&INPUT
+amass(1) = 12.011,
+flfrc = '${output_dir}/ph_DIA.fc',
+flfrq = '${output_dir}/ph_DIA.freq',
+dos = .true.,
+fldos = '${output_dir}/ph_dos_DIA.d',
+nk1 = 8,
+nk2 = 8,
+nk3 = 8,
+/

@@ -1,0 +1,22 @@
+&CONTROL
+calculation = 'scf',
+prefix = '${prefix}',
+pseudo_dir = '${potentials_dir}',
+outdir = '${output_dir}',
+/
+&SYSTEM
+${cell_config},
+ecutwfc = 65,
+ecutrho = 600,
+occupations = 'smearing',
+smearing = 'gaussian',
+degauss = 0.02,
+${doping}
+/
+&ELECTRONS
+conv_thr = ${conv_thr},
+/
+K_POINTS automatic
+9 9 9 0 0 0
+${atomic_species}
+${atomic_positions}

@@ -1,0 +1,33 @@
+&CONTROL
+calculation = 'bands',
+prefix = '${prefix}',
+pseudo_dir = '${potentials_dir}',
+outdir = '${output_dir}',
+/
+&SYSTEM
+${cell_config},
+ecutwfc = 65,
+ecutrho = 600,
+nbnd = 8,
+${doping}
+/
+&ELECTRONS
+conv_thr = ${conv_thr},
+diago_full_acc = .true.,
+/
+K_POINTS crystal_b
+6
+# GAMMA
+0.00000    0.00000    0.00000    100
+# X
+0.50000    0.50000    0.00000    100
+# W
+0.25000    0.50000   -0.25000    100
+# K
+0.00000    0.37500   -0.37500    100
+# L
+0.00000    0.50000    0.00000    100
+# GAMMA
+0.00000    0.00000    0.00000    100
+${atomic_species}
+${atomic_positions}

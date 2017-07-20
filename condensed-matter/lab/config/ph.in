@@ -1,0 +1,13 @@
+Phonons
+&INPUTPH
+tr2_ph = 1.0d-12,
+prefix = '${prefix}',
+ldisp = .true.,
+nq1 = 8,
+nq2 = 8,
+nq3 = 8,
+amass(1) = 12.011,
+outdir = '${output_dir}',
+fildyn = '${output_dir}/ph_DIA.dyn',
+trans = .true.,
+/

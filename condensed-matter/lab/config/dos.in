@@ -1,0 +1,5 @@
+&DOS
+outdir = '${output_dir}',
+prefix = '${prefix}',
+fildos = '${output_dir}/dos_DIA.d',
+/

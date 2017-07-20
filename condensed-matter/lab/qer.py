@@ -8,13 +8,25 @@ import yaml
 import time
 import string
 import random
+import getopt
 import itertools
 from subprocess import Popen, PIPE, STDOUT
 import logging
 
 CONFIG_DIR = 'config'
+CONFIG_FILE = 'config/config.yaml'
+DRY_RUN = False
 
-logging.basicConfig(level=logging.INFO)
+options, remainder = getopt.getopt(sys.argv[1:], 'c:l:d', ['config=', 'log=', 'dry-run'])
+
+for opt, arg in options:
+    if opt in ('-c', '--config'):
+        CONFIG_DIR = os.path.dirname(arg)
+        CONFIG_FILE = arg
+    elif opt in ('-l', '--log'):
+        logging.basicConfig(level=getattr(logging, arg.upper()))
+    elif opt in ('-d', '--dry-run'):
+        DRY_RUN = True
 
 print('''
                     ___           ___
@@ -37,16 +49,24 @@ print('''
 # Setup                               #
 #######################################
 
-# Parse the configuration files
-config_file = os.path.join(CONFIG_DIR, 'config.yaml')
+# Default config from environment
+config = {
+    'qe_bin_dir': os.getenv('QUANTUM_ESPRESSO_BIN_DIR'),
+    'qe_potentials_dir': os.getenv('QUANTUM_ESPRESSO_POTENTIALS_DIR'),
+}
 
-with open(config_file) as c:
+# Parse the configuration files
+with open(CONFIG_FILE) as c:
     try:
-        config = yaml.load(c)
+        user_config = yaml.load(c)
         logging.debug("Config parsed correctly")
     except yaml.YAMLError:
-        log.critical("There is some problem with config.yaml.")
+        logging.exception("There is some problem with config.yaml.")
         exit(1)
+
+# Merge the config
+for k in user_config:
+    config[k] = user_config[k]
 
 # Create the output directory if it does not exist
 if not os.path.exists(config['output_dir']):
@@ -122,8 +142,13 @@ class StepRunner(object):
             time.sleep(0.5)
 
 
-
 runner = StepRunner(config['qe_bin_dir'], config['output_dir'])
 
 for step in steps:
-    runner.run(step)
+
+    parsed = os.path.join(config['output_dir'], "{}.in.parsed".format(step.name))
+    with open(parsed, "w") as f:
+        f.write(step.input)
+
+    if not DRY_RUN:
+        runner.run(step)

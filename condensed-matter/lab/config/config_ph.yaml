@@ -1,0 +1,44 @@
+#######################################
+# Standard diamond phonons            #
+#######################################
+
+output_dir: 'output/ph'
+
+steps:
+- name: scf
+  command: pw.x
+
+- name: ph
+  command: ph.x
+
+- name: q2r
+  command: q2r.x
+
+- name: matdyn
+  command: matdyn.x
+
+- name: ph_dos
+  command: matdyn.x
+
+vars:
+  potentials_dir: 'potentials'
+  prefix: 'DIA_PH'
+  output_dir: 'output/ph'
+  doping: ''
+
+  conv_thr: '1.0d-10'  # must be high for phonons!
+
+  cell_config: |
+    ibrav = 2,
+    celldm(1) = 6.60,
+    nat = 2,
+    ntyp = 1
+
+  atomic_species: |
+    ATOMIC_SPECIES
+    C 12.011 C_PBE_hard.mt
+
+  atomic_positions: |
+    ATOMIC_POSITIONS crystal
+    C 0.00 0.00 0.00
+    C 0.25 0.25 0.25
