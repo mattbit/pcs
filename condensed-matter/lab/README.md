@@ -8,10 +8,10 @@ Usage is briefly outlined below.
 
 ```sh
 # Run qer using the specified configuration file
-python -c config/config.yaml
+python qer.py -c config/config.yaml
 
 # Dry run: only parses the configuration files
-python -d -c config/config.yaml
+python qer.py -d -c config/config.yaml
 
 ```
 
