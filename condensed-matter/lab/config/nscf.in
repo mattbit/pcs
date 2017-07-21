@@ -20,4 +20,4 @@ diago_full_acc = .true.,
 ${atomic_species}
 ${atomic_positions}
 K_POINTS automatic
-24 24 24 0 0 0
+${num_k_points} ${num_k_points} ${num_k_points} 0 0 0

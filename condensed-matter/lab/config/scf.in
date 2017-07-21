@@ -17,6 +17,6 @@ ${doping}
 conv_thr = ${conv_thr},
 /
 K_POINTS automatic
-9 9 9 0 0 0
+${num_k_points} ${num_k_points} ${num_k_points} 0 0 0
 ${atomic_species}
 ${atomic_positions}

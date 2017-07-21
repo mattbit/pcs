@@ -21,10 +21,11 @@ steps:
   command: dos.x
 
 vars:
-  doping: 'tot_charge = +0.01'
+  doping: 'tot_charge = +0.0025'
   potentials_dir: 'potentials'
   prefix: 'DIA_DOPED'
   output_dir: 'output/doped'
+  num_k_points: 36
 
   conv_thr: '1.0d-8'
 

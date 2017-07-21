@@ -25,6 +25,7 @@ vars:
   prefix: 'DIA_PH'
   output_dir: 'output/ph'
   doping: ''
+  num_k_points: 36
 
   conv_thr: '1.0d-10'  # must be high for phonons!
 

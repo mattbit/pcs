@@ -25,7 +25,8 @@ vars:
   prefix: 'DIA'
   output_dir: 'output/normal'
   doping: ''
-
+  num_k_points: 36
+  
   conv_thr: '1.0d-8'
 
   cell_config: |
