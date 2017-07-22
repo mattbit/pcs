@@ -1,0 +1,19 @@
+counts
+time
+??
+TA
+TB
+DTA
+DTB
+ro CH1
+Vm CH1
+V+ CH1
+V- CH1
+ro CH2
+Vm CH2
+V+ CH2
+V- CH2
+gate voltage
+gate current
+2W resistance
+2W current
