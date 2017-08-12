@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <title>Ising-like epidemic model</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Source+Sans+Pro:400,700">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Source Sans Pro";
+        font-size: 16px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      #controls {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .row {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      label, input, output {
+        font: 16px/30px "Source Sans Pro";
+        height: 30px;
+        vertical-align: middle;
+      }
+      #steps-per-frame {
+        width: 6em;
+      }
+      #temperature {
+        vertical-align: middle;
+      }
+      #run-button {
+        appearance: none;
+        font: 16px/1.5 "Source Sans Pro";
+        border: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        width: 600px;
+        padding: 0.5em;
+      }
+      #run-button:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Epidemic Ising-like model</h1>
+      <div id="simulation">
+        <canvas id="canvas"></canvas>
+        <canvas id="plot" width="400" height="100"></canvas>
+        <div id="controls">
+          <div class="row">
+            <div class="input-field temperature">
+              <label for="temperature">Temperature</label>
+              <input type="range" min="0.00000001" step="0.001" max="10" value="2.50" id="temperature">
+              <output for="temperature" id="temperature-output">2.50</output>
+            </div>
+            <div class="input-field steps-per-frame">
+              <label for="steps-per-frame">Steps per frame</label>
+              <input type="number" min="1" step="1" value="50000" id="steps-per-frame">
+            </div>
+          </div>
+          <div class="row">
+            <button id="run-button">Run</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="smoothie.js"></script>
+    <script src="epidemic.js"></script>
+    <script>
+      ////////////////////////////////////////
+      // Initialize the simulation          //
+      ////////////////////////////////////////
+
+      simulation = new Simulation()
+      simulation.init({
+        width: 200,    // width of lattice (number of sites)
+        height: 200,   // height of lattice (number of sites)
+        site: 4,       // width of a site (in pixels)
+        density: 0.25, // population density
+        infected: 0.01, // initial infected population fraction
+        immune: 0.2,   // immune (vaccinated) population fraction
+      })
+    </script>
+  </body>
+</html>
