@@ -27,7 +27,6 @@ actions = range(env.action_space.n)
 
 # %
 for _ in range(EPISODES):
-    nn = np.zeros_like(Q)
     s = env.reset()
     done = False
     for _ in range(100):

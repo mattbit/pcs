@@ -46,11 +46,7 @@ DQNetwork = torch.nn.Sequential(
     torch.nn.ReLU(),
     torch.nn.Linear(10, 2))
 
-loss_fn = torch.nn.SmoothL1Loss()  # Huber loss
-optimizer = torch.optim.Adam(DQNetwork.parameters(), lr=1e-3)
-
 # Set up the policy
-
 def policy(s, a, DQNetwork, eps):
     """Returns the probability of choosing action `a` from state `s`."""
     # Qs contains the expected Q for all possible actions.
@@ -66,9 +62,14 @@ def choose_action(state, DQNetwork, eps=0.1):
     return int(np.random.choice(actions, p=policy(state, actions, DQNetwork, eps)))
 
 # Train the model
-gamma = 0.8
-batch_size = 50
+gamma = 0.8  # discount factor
+learning_rate = 1e-3
+batch_size = 48
 mem = Memory(1000)
+
+loss_fn = torch.nn.SmoothL1Loss()  # Huber loss
+optimizer = torch.optim.Adam(DQNetwork.parameters(), lr=learning_rate)
+
 for episode in range(500):
     state = env.reset()
     for step in range(500):
@@ -129,7 +130,6 @@ for episode in range(500):
 print("Training finished!")
 
 # Testing the trained model.
-
 state = env.reset()
 tot_reward = 0
 for t in range(500):
